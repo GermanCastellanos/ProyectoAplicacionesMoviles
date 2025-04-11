@@ -1,4 +1,4 @@
-package com.unibague.myapplication
+package com.unibague.proyectoaplicacionesmoviles
 
 import org.junit.Test
 

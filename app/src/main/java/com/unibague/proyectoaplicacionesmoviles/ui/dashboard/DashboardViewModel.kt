@@ -1,4 +1,4 @@
-package com.unibague.myapplication.ui.dashboard
+package com.unibague.proyectoaplicacionesmoviles.ui.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

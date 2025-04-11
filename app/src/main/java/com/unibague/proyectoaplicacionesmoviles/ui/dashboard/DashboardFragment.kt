@@ -1,4 +1,4 @@
-package com.unibague.myapplication.ui.dashboard
+package com.unibague.proyectoaplicacionesmoviles.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.unibague.myapplication.databinding.FragmentDashboardBinding
+import com.unibague.proyectoaplicacionesmoviles.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 
