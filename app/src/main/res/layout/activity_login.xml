@@ -148,7 +148,7 @@
         android:id="@+id/tvOr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="44dp"
         android:text="O continúa con"
         android:textColor="@color/moradillo"
         app:layout_constraintEnd_toEndOf="parent"
