@@ -36,3 +36,6 @@ class MainActivity : AppCompatActivity() {
  */
     }
 }
+
+
+/*Este hijueputa proyecto no nos va a salir JAJAJ
