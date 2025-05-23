@@ -1,38 +1,79 @@
 package com.unibague.proyectoaplicacionesmoviles
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.unibague.proyectoaplicacionesmoviles.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.unibague.proyectoaplicacionesmoviles.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var currentFragmentTag: String? = null
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*
-        val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        auth = Firebase.auth
 
- */
+        // Add AuthStateListener to detect sign-out
+        auth.addAuthStateListener { firebaseAuth ->
+            if (firebaseAuth.currentUser == null) {
+                // User is signed out, redirect to LoginActivity
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        // Mostrar HomeFragment por defecto
+        if (savedInstanceState == null) {
+            showFragment(HomeFragment(), "HomeFragment")
+        }
+
+        // Configurar BottomNavigationView
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    showFragment(HomeFragment(), "HomeFragment")
+                    true
+                }
+                R.id.navigation_learn -> {
+                    showFragment(SearchFragment(), "LearnFragment")
+                    true
+                }
+                R.id.navigation_profile -> {
+                    showFragment(ProfileFragment(), "ProfileFragment")
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun showFragment(fragment: androidx.fragment.app.Fragment, tag: String) {
+        // Evitar recargar el mismo fragment
+        if (currentFragmentTag == tag) return
+
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, fragment, tag)
+        transaction.addToBackStack(null) // Opcional: permite regresar al fragment anterior con el botón "atrás"
+        transaction.commit()
+        currentFragmentTag = tag
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Clean up AuthStateListener if needed (optional, as Firebase manages it)
     }
 }

@@ -63,5 +63,9 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")   // Para Cloud Storage
     implementation("com.google.firebase:firebase-messaging") // Para Cloud Messaging
 
+    implementation("androidx.media3:media3-exoplayer:1.6.1")
+    implementation("androidx.media3:media3-exoplayer-dash:1.6.1")
+    implementation("androidx.media3:media3-ui:1.6.1")
+    implementation("androidx.media3:media3-ui-compose:1.6.1")
 
 }

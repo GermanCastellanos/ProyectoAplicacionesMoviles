@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<div>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#F5F5F5" />
+    <corners android:radius="20dp" />
+</selector>
+
+   <!-- circle_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#F5F5F5" />
+</selector>
+
+    <!-- rounded_corner_background.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#F5F5F5" />
+    <corners android:radius="12dp" />
+</selector>
+
+    <!-- button_try_now_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#000000" />
+    <corners android:radius="24dp" />
+</shape>
+
+<recursos_graficos>
+
+</recursos_graficos>
+</div>
+

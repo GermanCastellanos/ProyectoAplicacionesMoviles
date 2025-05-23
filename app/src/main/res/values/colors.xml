@@ -8,5 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="moradillo">#491B6D</color>
-
+    <color name="bottom_nav_item_color">#000000</color>
 </resources>
